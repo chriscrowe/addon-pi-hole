@@ -37,7 +37,10 @@
     "ipv4_address": "",
     "ipv6_address": "",
     "virtual_host": "",
+    "use_unbound_resolver": false,
+    "unbound_port": 5353,
     "hosts": []
+    
   },
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
@@ -53,6 +56,7 @@
     "ipv4_address": "str",
     "ipv6_address": "str",
     "virtual_host": "str",
+    "use_unbound_resolver": "bool",
     "hosts": [
       {
         "name": "str",
@@ -60,7 +64,8 @@
       }
     ],
     "i_like_to_be_pwned": "bool?",
-    "leave_front_door_open": "bool?"
+    "leave_front_door_open": "bool?",
+    "unbound_port": "int?"
   },
   "environment": {
     "LOG_FORMAT": "{LEVEL}: {MESSAGE}"

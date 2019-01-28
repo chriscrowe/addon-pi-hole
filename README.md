@@ -86,6 +86,8 @@ Example add-on configuration:
   "ipv4_address": "",
   "ipv6_address": "",
   "virtual_host": "homeassistant.example.com",
+  "use_unbound_resolver": true,
+  "unbound_port": 5353,
   "hosts": [
     {
       "name": "printer.local",
@@ -224,6 +226,15 @@ be a short style hostname like: `printer` or a longer one `printer.local`.
 
 The IP address this specified host must point to. Its value must be an IPv6 or
 IPv4 IP address.
+
+### Option: `use_unbound_resolver`
+
+Enables in-built [Unbound](https://nlnetlabs.nl/projects/unbound/about/) DNS resolver. When enabled, you should configure
+your upstream DNS to point to 127.0.0.1#unbound_port (see below)
+
+### Option: `unbound_port`
+
+Port to use internally for communicating with Unbound DNS resolver.
 
 ### Option: `i_like_to_be_pwned`
 

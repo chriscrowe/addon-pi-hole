@@ -54,6 +54,8 @@ RUN \
         sed=4.4-r2 \
         sudo=1.8.23-r2 \
         wget=1.20.1-r0 \
+        unbound=1.7.3-r0 \
+        jq=1.6_rc1-r1 \
     \
     && addgroup -S pihole \
     && adduser -S -s /sbin/nologin pihole pihole \
@@ -92,6 +94,9 @@ RUN \
 
 # Copy root filesystem
 COPY rootfs /
+
+# Download the current root hints file (the list of primary root servers which are serving the domain "." - the root domain). 
+RUN wget -O /etc/unbound/root.hints https://www.internic.net/domain/named.root
 
 # Build arguments
 ARG BUILD_ARCH
