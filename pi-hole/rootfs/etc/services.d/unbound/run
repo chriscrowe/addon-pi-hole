@@ -6,4 +6,8 @@
 # shellcheck disable=SC1091
 source /usr/lib/hassio-addons/base.sh
 
-exec unbound -v -d
+if hass.config.true 'use_unbound_resolver'; then
+    unbound_port=$(hass.config.get 'unbound_port')
+    hass.log.debug "Starting Unbound DNS resolver on port ${unbound_port}"
+    exec unbound -v -d
+fi
